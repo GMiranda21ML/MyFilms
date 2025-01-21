@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pesquisar Filme</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+    </head>
+    <body>
+        <header>
+            <div class = "container">
+                
+                <h1>Pesquisar Filme</h1>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}">Logout</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'index' %}">Menu</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="container">
+            <div class="center-container">
+                <div id="search-form" class="search-form">
+                    <form method="GET" action="{% url 'buscar' %}">
+                        <input type="text" name="title" placeholder="Digite o nome do filme" required>
+                        <button type="submit" class="button">Buscar Filme</button>
+                    </form>
+                </div>
+
+                {% if movie_info %}
+                    <div id="movie-info" class="movie-info">
+                        <img src="{{ movie_info.Poster }}" alt="Poster do Filme">
+                        <h1>{{ movie_info.Title }}</h1>
+                        <p><strong>Ano:</strong> {{ movie_info.Year }}</p>
+                        <p><strong>Duração:</strong> {{ movie_info.Runtime }}</p>
+                        <p><strong>Gênero:</strong> {{ movie_info.Genre }}</p>
+                        <p><strong>Diretor:</strong> {{ movie_info.Director }}</p>
+                        <p><strong>Plot:</strong> {{ movie_info.Plot }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Todos os direitos reservados</p>
+        </footer>
+
+        <script>
+            {% if movie_info %}
+                document.getElementById('search-form').style.display = 'none';
+            {% endif %}
+        </script>
+
+    </body>
+</html>

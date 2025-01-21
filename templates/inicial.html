@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Acesso</title>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo</h1>
+    </header>
+    <div class="container center-container">
+        <a href="{% url 'login' %}" class="button">Login</a>
+        <a href="cadastro.html" class="button">Cadastro</a>
+    </div>
+    <footer>
+        <p>&copy; 2025 Página de Acesso. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
