@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Filmes</title>
-    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <title>Minha Lista de Filmes</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Bem-vindo à Página de Filmes</h1>
+            <h1>Minha Lista de Filmes</h1>
             <nav>
                 <ul>
                     <li>
@@ -27,14 +27,21 @@
             </nav>
         </div>
     </header>
-    <div class="container center-container">
-        <div class="options">
-            <a href="{% url 'minhaLista' %}" class="button">Minha Lista</a>
-            <a href="{% url 'buscar' %}" class="button">Pesquisar Filme</a>
+
+    <div class="container">
+        <div class="movie-gallery">
+            {% for filme in filmes %}
+                <div class="movie-item">
+                    <a href="{% url 'filmeDetalhe' filme.id %}">
+                        <img src="{{ filme.poster }}" alt="Poster de {{ filme.title }}" class="poster-img">
+                    </a>
+                </div>
+            {% endfor %}
         </div>
     </div>
+
     <footer>
-        <p>&copy; 2025 Página de Filmes. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Todos os direitos reservados</p>
     </footer>
 </body>
 </html>

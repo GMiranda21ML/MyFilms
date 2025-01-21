@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="{% static 'styles/style.css' %}">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Login</h1>
+            <h1>Cadastro</h1>
             <nav>
                 <ul>
                     <li>
@@ -23,19 +23,18 @@
     </header>
     <div class="container center-container">
         <div class="login-box">
-            <form action="{% url 'login' %}" method="POST">
+            <form action="{% url 'cadastro' %}" method="POST">
                 {% csrf_token %}
-                {% for field in form.visible_fields  %}
+                {% for field in form.visible_fields %}
                 <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                {{ field}}        
+                {{ field }}        
                 {% endfor %}
-                <button type="submit" class="button">Entrar</button>
+                <button type="submit" class="button">Cadastrar</button>
             </form>
-            <a class="google-button" href="http://127.0.0.1:8000/accounts/google/login/?process=login">Entrar com o Google</a>
         </div>
     </div>
     <footer>
-        <p>&copy; 2025 Login. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Cadastro. Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>

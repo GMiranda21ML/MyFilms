@@ -46,14 +46,24 @@
                         <p><strong>Gênero:</strong> {{ movie_info.Genre }}</p>
                         <p><strong>Diretor:</strong> {{ movie_info.Director }}</p>
                         <p><strong>Plot:</strong> {{ movie_info.Plot }}</p>
+                        <form method="POST" action="{% url 'adicionar_filme' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="title" value="{{ movie_info.Title }}">
+                            <input type="hidden" name="year" value="{{ movie_info.Year }}">
+                            <input type="hidden" name="runtime" value="{{ movie_info.Runtime }}">
+                            <input type="hidden" name="genre" value="{{ movie_info.Genre }}">
+                            <input type="hidden" name="director" value="{{ movie_info.Director }}">
+                            <input type="hidden" name="plot" value="{{ movie_info.Plot }}">
+                            <input type="hidden" name="poster" value="{{ movie_info.Poster }}">
+                            <button type="submit" class="button">Adicionar ao Banco</button>
+                        </form>
+                        <form method="GET" action="{% url 'buscar' %}">
+                            <button type="submit" class="button">Pesquisar Novamente</button>
+                        </form>
                     </div>
                 {% endif %}
             </div>
         </div>
-
-        <footer>
-            <p>&copy; 2025 Todos os direitos reservados</p>
-        </footer>
 
         <script>
             {% if movie_info %}
